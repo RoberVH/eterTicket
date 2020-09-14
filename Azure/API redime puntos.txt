@@ -1,0 +1,38 @@
+API:
+http://bc-request.eastus.cloudapp.azure.com:8080/eterTicket/redimePnts
+
+XML Prototipo
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<XMLversion1.0>
+ <PAGOPTOS>
+	<NUMCLI_E t="1"></NUMCLI_E>
+	<NUUNIOPE_E t="1"></NUUNIOPE_E>
+	<TOTPAGO_T t="1"></TOTPAGO_T>
+</PAGOPTOS>	
+</XMLversion1.0>
+
+NUMCLI_E - El numero del cliente que quiere hacer canjear puntos en su pago
+NUUNIOPE_E - Numero de la Unidad que solicita el canje de puntos
+TOTPAGO_T - Cantidad en moneda que se quiere pagar
+
+Ejemplo:
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<XMLversion1.0>
+ <PAGOPTOS>
+	<NUMCLI_E t="1">2801</NUMCLI_E>
+	<NUUNIOPE_E t="1">2016</NUUNIOPE_E>
+	<TOTPAGO_T t="1">245.20</TOTPAGO_T>
+</PAGOPTOS>	
+</XMLversion1.0>
+
+Posibles respuestas:
+
+Status   Mnsaje:
+405		"transaction returned with failure: Error: 60, La cuenta de cliente no existe"
+405		"transaction returned with failure: Error: 50, No hay saldo suficiente para cubrir monto"
+200		"1644956899"
+
+El status 200 es OK y el alfanumerico que regresa es la clave de autorizacion (en el historico de la blockchain el registro de redencion de puntos queda con esa clave.
+
+
+	

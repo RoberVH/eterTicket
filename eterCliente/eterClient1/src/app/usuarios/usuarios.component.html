@@ -1,0 +1,24 @@
+   <div>
+    <table>
+        <tr>
+          <td>
+              <div class="card-body">
+               <p>Usuario Actual: {{usuarioFirmado.username}} ({{usuarioFirmado.nocliente}}) </p>
+              </div>  
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <div class="card-body">
+                  <form [formGroup]="frmUsuarios">
+                      <select formControlName="ctrlUsuario">
+                        <option [ngValue]="usuario" *ngFor="let usuario of Usuarios">{{usuario.tipo}}</option>
+                      </select>
+                  </form>           
+              </div>
+          </td>
+        </tr>
+      </table>
+ </div>
+
+

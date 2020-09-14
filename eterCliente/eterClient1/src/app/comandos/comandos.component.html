@@ -1,0 +1,49 @@
+<div> 
+<table>
+  <div>
+<!--   <form (ngSubmit)="onSubmit(f)" #f="ngForm"> -->   
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm"> 
+    <tr >
+      <td>
+        <p>Introduzca parametros de acuerdo a la consulta</p>
+        <div class="card-body">
+        
+          <div class="col-xs-2">
+            <label for="fecini">F. Ini:</label>
+            <input type="text"  value="2018/01/01" class="form-control" name="fecini" ngModel>
+            <label for="fecfinal">F. Final:</label>
+            <input type="text" value="2018/01/01" class="form-control" name="fecfinal" ngModel>
+          </div>
+          <div class="col-xs-3">
+              <label for="fecexacta">F. Exacta:</label>
+              <input type="text" value="2018/01/01" class="form-control" name="fecexacta" ngModel>
+              <label for="TiendaId">TiendaId:</label>
+              <input type="text" class="form-control" name="tiendaId" ngModel>
+          </div>
+          <div class="col-xs-4">
+              <label for="numcliente">Num Cliente:</label>
+              <input type="text" class="form-control" name="numcliente" ngModel>  
+              <label for="ticketID">Id de Ticket</label>
+              <input type="text" class="form-control" name="ticketID" ngModel>  
+          </div>
+        </div>
+    </td>
+   </tr>
+   <tr>
+    <td>
+        <div class="card-body">
+ 
+            <button name="leerTicket" type="submit" (click)="selecto='leerT'"  class="btn btn-primary">Ticket</button>
+            <button name="leerTickets" type="submit" (click)="selecto='leerTs'"  class="btn btn-primary">Tickets</button>
+            <button name="saldoCte" type="submit" (click)="selecto='saldoCte'" class="btn btn-primary">Saldo Cte</button>
+            <button name="histPtosgn" type="submit" (click)="selecto= 'hptsgn'" class="btn btn-primary">Hist. Ptos Gndos</button>
+            <button name="histPtoscjs" type="submit" (click)="selecto= 'hptscjs'" class="btn btn-primary">Hist. Canje Ptos</button>
+            <button name="pdtoFab"  type="submit" (click)="selecto= 'pdtoFab'" class="btn btn-primary">Pdto Fab</button>
+            <button name="pdtosFab" type="submit" (click)="selecto= 'pdtosFab'" class="btn btn-primary">Pdtos Fab</button>
+        </div>
+   </td>
+  </tr>
+  </form>
+  </div>
+</table>      
+</div>

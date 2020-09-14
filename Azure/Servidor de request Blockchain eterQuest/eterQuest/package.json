@@ -1,0 +1,19 @@
+{
+  "name": "srvbcretailers",
+  "version": "1.0.0",
+  "description": "Servicio para ineractuar con la BChain Retailers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roberto Vicuna",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fabric-ca-client": "^1.1.0",
+    "fabric-client": "^1.1.0",
+    "grpc": "^1.6.0",
+    "jsonwebtoken": "^8.4.0"
+  }
+}

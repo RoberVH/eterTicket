@@ -1,0 +1,80 @@
+
+<div class="container-fluid content-row">
+    <div class="tab-slider--container" [ngSwitch]="viewMode">
+        <div id="inicial" class="tab-slider--body" *ngSwitchCase="'inicial'">
+          <h2>Consultas Blockchain</h2>
+          <p>No se usan todos todos los parametros en todas las consultas. </p>
+          <p>Se utilizan de acuerdo al tipo de consulta. Por ejemplo, para consultar un ticket solo se usa el parametros Id de Ticket</p>
+    </div>
+    <div id="SinResults" class="tab-slider--body" *ngSwitchCase="'SinResults'">
+      <h2>No hay Resultados</h2>
+    </div>    
+    <div id="UnTicket" class="tab-slider--body" *ngSwitchCase="'UnTicket'">
+     <h2>Ticket </h2>
+          <table class="col-md-offset-2">
+            <tr><th>Tienda</th><th>Folio</th><th>Caja</th><th>Fecha</th><th>Hora Ini.</th><th>Hora Fin.</th><th>Imp.</th>
+              <th>Ptos</th><th>Cliente</th><th>Vendedor</th></tr> 
+            <tr><td>{{Ticket['header']['td']}}</td><td>{{Ticket['header']['fl']}}</td><td>{{Ticket['header']['nc']}}</td>
+              <td>{{Ticket['header']['fv']}}</td><td>{{Ticket['header']['hiv']}}</td><td>{{Ticket['header']['hfv']}}</td>
+              <td>{{Ticket['header']['im']}}</td><td>{{Ticket['header']['pv']}}</td><td>{{Ticket['header']['ncj']}}</td>
+              <td>{{Ticket['header']['vr']}}</td></tr>
+        </table>
+        <br>        
+        <h3>Formas de Pago</h3>
+        <table class="col-md-offset-2">
+          <tr>
+            <th>Clave Pago</th><th>Tipo Pago</th><th>Desc.</th><th>Monto</th><th>Num. Tarj.</th><th>No. Autoriz.</th>
+            <th>F. Exp.</th>
+          </tr><tr *ngFor="let pago of Ticket['header']['Pgos']"> 
+            <td>{{ pago['cp'] }}</td><td>{{ pago['tm'] }}</td><td>{{ pago['xp'] }}</td><td>{{ pago['tpo'] }}</td>
+            <td>{{ pago['nt'] }}</td><td>{{ pago['na'] }}</td><td>{{ pago['fx'] }}</td></tr>
+      </table>
+      <h3>Articulos</h3>      
+        <table class="col-md-offset-2">
+          <tr><th>Cant.</th><th>Cnt x Num</th><th>Codigo Barras</th><th>Desc.</th><th>P. IVA</th><th>P. Dscto</th><th>P. total</th>
+            <th>F. Exp.</th></tr> 
+           <tr *ngFor="let linea of Ticket['lineas']">
+            <td>{{ linea['Record']['cn'] }}</td><td>{{ linea['Record']['cnx']}}</td><td>{{ linea['Record']['cb']}}</td>
+            <td>{{ linea['Record']['ds']}}</td><td>{{ linea['Record']['psi']}}</td><td>{{ linea['Record']['pd']}}</td>
+            <td>{{ linea['Record']['pt']}}</td></tr>
+      </table>          
+    </div>
+    <div id="variosHeaders" class="tab-slider--body" *ngSwitchCase="'variosHeaders'">
+      <h2>Tickets </h2>
+      
+      <table class="col-md-offset-2">
+        <tr><th>Id Ticket</th><th>Tienda</th><th>Folio</th><th>Caja</th><th>Fecha</th><th>Hora Ini.</th><th>Hora Fin.</th><th>Imp.</th>
+          <th>Ptos</th><th>Cliente</th><th>Vendedor</th></tr> 
+        <tr *ngFor="let header of Ticket['header']">
+          <td>{{ header['Key'] }}</td><td>{{header['Record']['td']}}</td><td>{{header['Record']['fl']}}</td><td>{{header['Record']['nc']}}</td>
+          <td>{{header['Record']['fv']}}</td><td>{{header['Record']['hiv']}}</td><td>{{header['Record']['hfv']}}</td>
+          <td>{{header['Record']['im']}}</td><td>{{header['Record']['pv']}}</td><td>{{header['Record']['ncj']}}</td>
+          <td>{{header['Record']['vr']}}</td></tr>
+          
+    </table>       
+    </div>
+    <div id="SinParametros" class="tab-slider--body" *ngSwitchCase="'SinParametros'">
+      <h2>Consulta sin parametros no permitida</h2>
+  </div>
+  <div id="CtaCte" class="tab-slider--body" *ngSwitchCase="'CtaCte'">
+     <h2>Saldo de Puntos de Cliente Numero {{ CtaCte['Key'] }}</h2>
+     <br>  
+     <h3>Puntos de Retailer: {{CtaCte['Record']['tp']}}</h3>
+     <h3>Puntos de Fabricante: {{CtaCte['Record']['tpf']}}</h3>
+      <br>
+  </div>
+  <div id="hptscjs" class="tab-slider--body" *ngSwitchCase="'hptscjs'">
+      <h2>Saldo de Canje de puntos de Retailer </h2>
+       <h3>Cliente Numero {{histCanje[0]['Record']['ct']}}</h3>
+       <table class="col-md-offset-2">
+          <tr><th>Fecha</th><th>Monto</th><th>Saldo Anterior</th><th>Saldo Nuevo</th></tr> 
+          <tr *ngFor="let canje of histCanje">
+            <td>{{canje['Record']['fe']}}</td><td>{{canje['Record']['mt']}}</td><td>{{canje['Record']['sa']}}</td>
+            <td>{{canje['Record']['sn']}}</td></tr>
+      </table>       
+  </div>
+  <div id="MsjError" class="tab-slider--body" *ngSwitchCase="'MsjError'">
+    <h2>{{MsjDesplegableError}}</h2>
+  </div>
+</div>
+</div>
